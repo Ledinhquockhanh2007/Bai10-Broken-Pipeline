@@ -21,4 +21,10 @@ public class ShippingCalculatorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> calc.calculate(-1, "STANDARD"));
     }
+
+    @Test
+    void testFreeShipping() {
+        // Cố tình kỳ vọng cân nặng 0kg thì phí là 0 đồng (Sẽ gây lỗi vì logic không cho phép <= 0)
+        assertEquals(0.0, calc.calculate(0, "STANDARD"));
+    }
 }
